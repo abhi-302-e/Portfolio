@@ -47,7 +47,6 @@
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#experience" class="nav-link">Experience</a>
         <a href="#education" class="nav-link">Education</a>
-        <a href="#terminal" class="nav-link">CLI Terminal</a>
         <a href="#contact" class="nav-link">Contact</a>
         <button class="btn btn-sm btn-outline resume-nav-btn" id="openResumeBtn">
           <i class="fa-solid fa-file-invoice"></i> ATS Resume
@@ -197,98 +196,7 @@
       </div>
     </section>
 
-    <!-- DEVELOPER TERMINAL & RECRUITER QUICK-INSPECT -->
-    <section id="terminal" class="section terminal-section">
-      <div class="section-header">
-        <span class="section-tag">&lt;DEVELOPER CONSOLE /&gt;</span>
-        <h2 class="section-title">Interactive Terminal & Recruiter Fast-Track</h2>
-        <p class="section-subtitle">Inspect technical qualifications, run developer commands, or view a high-level executive summary tailored for hiring managers.</p>
-      </div>
 
-      <div class="terminal-container">
-        <!-- Terminal Header -->
-        <div class="terminal-bar">
-          <div class="terminal-dots">
-            <span class="dot dot-red"></span>
-            <span class="dot dot-yellow"></span>
-            <span class="dot dot-green"></span>
-          </div>
-          <div class="terminal-title">
-            <i class="fa-solid fa-terminal"></i> abhishek@portfolio-dev-vm: ~ (zsh)
-          </div>
-          <div class="terminal-tabs">
-            <button class="term-tab active" data-tab="cli"><i class="fa-solid fa-terminal"></i> CLI</button>
-            <button class="term-tab" data-tab="recruiter"><i class="fa-solid fa-user-tie"></i> Recruiter Cheat Sheet</button>
-          </div>
-        </div>
-
-        <!-- Terminal Tab 1: Interactive CLI -->
-        <div class="terminal-body" id="cliTab">
-          <div class="terminal-welcome">
-            <p class="term-accent">Welcome to Abhishek's Interactive Portfolio Shell [v2.4.0-prod]</p>
-            <p class="term-muted">Type <span class="term-cmd-highlight">help</span> to list commands or click shortcuts below:</p>
-            <div class="terminal-chips">
-              <button class="chip-cmd" data-cmd="skills"><i class="fa-solid fa-microchip"></i> skills</button>
-              <button class="chip-cmd" data-cmd="projects"><i class="fa-solid fa-diagram-project"></i> projects</button>
-              <button class="chip-cmd" data-cmd="experience"><i class="fa-solid fa-briefcase"></i> experience</button>
-              <button class="chip-cmd" data-cmd="education"><i class="fa-solid fa-graduation-cap"></i> education</button>
-              <button class="chip-cmd" data-cmd="contact"><i class="fa-solid fa-address-book"></i> contact</button>
-              <button class="chip-cmd" data-cmd="hire"><i class="fa-solid fa-handshake"></i> hire</button>
-              <button class="chip-cmd" data-cmd="clear"><i class="fa-solid fa-trash"></i> clear</button>
-            </div>
-          </div>
-          
-          <div class="terminal-history" id="terminalHistory"></div>
-
-          <div class="terminal-input-row">
-            <span class="term-prompt">guest@abhishek-portfolio:~$</span>
-            <input type="text" id="terminalInput" class="term-input" placeholder="type 'help', 'skills', 'projects', 'hire'..." autocomplete="off" spellcheck="false">
-          </div>
-        </div>
-
-        <!-- Terminal Tab 2: Recruiter Cheat Sheet -->
-        <div class="terminal-body recruiter-cheat-sheet" id="recruiterTab" style="display: none;">
-          <div class="cheat-grid">
-            <div class="cheat-card">
-              <h3><i class="fa-solid fa-bullseye"></i> Why Hire Abhishek?</h3>
-              <ul>
-                <li><strong>Strong CS Core:</strong> Solid grasp of Data Structures, Algorithms (active LeetCode practice), OOP, and Relational DBMS.</li>
-                <li><strong>Proven Execution:</strong> Built end-to-end full-stack applications (Node.js, Express, MySQL) and IoT sensor telemetry systems.</li>
-                <li><strong>Industry Experience:</strong> 45-day SEO & Web optimization internship analyzing site performance and organic web metrics.</li>
-                <li><strong>Fast Adaptability:</strong> Self-driven learner certified in Microsoft Azure, Infosys Java Fundamentals, and Kaggle Python.</li>
-              </ul>
-            </div>
-            <div class="cheat-card">
-              <h3><i class="fa-solid fa-clipboard-check"></i> Candidate Specifications</h3>
-              <div class="spec-row">
-                <span class="spec-label">Target Roles:</span>
-                <span class="spec-val">SDE Intern, Junior Software Engineer, Full-Stack Dev</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Graduation:</span>
-                <span class="spec-val">2028 (B.Tech Computer Science - IFHE)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Location:</span>
-                <span class="spec-val">Hyderabad, India (Open to Relocation & Remote)</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Primary Languages:</span>
-                <span class="spec-val">Java, Python, C, JavaScript, SQL</span>
-              </div>
-              <div class="spec-row">
-                <span class="spec-label">Contact:</span>
-                <span class="spec-val"><a href="mailto:yadavabhiyadav456@gmail.com">yadavabhiyadav456@gmail.com</a> &bull; +91 9050514176</span>
-              </div>
-              <button class="btn btn-sm btn-primary cheat-resume-btn" id="openResumeFromCheat">
-                <i class="fa-solid fa-file-pdf"></i> Open Printable Resume
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
 
     <!-- ABOUT SECTION -->
     <section id="about" class="section about-section">

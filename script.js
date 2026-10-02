@@ -168,175 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderParticles();
   }
 
-  // 6. Interactive Developer CLI Terminal
-  const terminalInput = document.getElementById('terminalInput');
-  const terminalHistory = document.getElementById('terminalHistory');
-  const termTabs = document.querySelectorAll('.term-tab');
-  const cliTab = document.getElementById('cliTab');
-  const recruiterTab = document.getElementById('recruiterTab');
-
-  // Terminal Tab Switching
-  termTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      termTabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const target = tab.dataset.tab;
-      if (target === 'cli') {
-        cliTab.style.display = 'block';
-        recruiterTab.style.display = 'none';
-        if (terminalInput) terminalInput.focus();
-      } else {
-        cliTab.style.display = 'none';
-        recruiterTab.style.display = 'block';
-      }
-    });
-  });
-
-  const commands = {
-    help: `
-<strong>Available Commands:</strong>
-  &bull; <span class="term-cmd-highlight">skills</span>       : List categorized technical competencies & tools
-  &bull; <span class="term-cmd-highlight">projects</span>     : Summarize major production & academic systems
-  &bull; <span class="term-cmd-highlight">experience</span>   : View SEO & Web optimization corporate internship
-  &bull; <span class="term-cmd-highlight">education</span>    : Inspect B.Tech CSE degree, institution, and GPA
-  &bull; <span class="term-cmd-highlight">certifications</span>: View verified Azure, Infosys, and Kaggle badges
-  &bull; <span class="term-cmd-highlight">contact</span>      : Print direct contact coordinates (Email, Phone, Location)
-  &bull; <span class="term-cmd-highlight">hire</span>         : Why hire Abhishek? Fast summary for engineering managers
-  &bull; <span class="term-cmd-highlight">resume</span>       : Launch ATS-formatted interactive Resume modal
-  &bull; <span class="term-cmd-highlight">whoami</span>       : Display candidate persona
-  &bull; <span class="term-cmd-highlight">clear</span>        : Clear terminal buffer
-`,
-    skills: `
-<strong>Technical Arsenal:</strong>
-  &bull; <strong>Languages:</strong> Java, Python, C, JavaScript (ES6+), SQL
-  &bull; <strong>Web & Backend:</strong> Node.js, Express.js, HTML5, CSS3, REST APIs
-  &bull; <strong>Databases & Cloud:</strong> MySQL (3NF Relational Modeling), Microsoft Azure
-  &bull; <strong>Core CS:</strong> Data Structures & Algorithms (LeetCode Active), OOP, Git, Linux
-`,
-    projects: `
-<strong>Featured Projects:</strong>
-  1. <strong>BiteSwift:</strong> Full-stack on-demand food ordering platform (Node.js, Express, JavaScript, REST API)
-  2. <strong>MediCare:</strong> 3NF Normalized Hospital Database Management System (MySQL, Relational Schema)
-  3. <strong>AegisGas:</strong> Real-time IoT fire & hazardous gas telemetry system (MQ-2 Sensor, Embedded C)
-`,
-    experience: `
-<strong>Corporate Internship:</strong>
-  &bull; <strong>Role:</strong> SEO & Web Engineering Intern
-  &bull; <strong>Company:</strong> Forest Nation (Manika Encon Pvt. Ltd.)
-  &bull; <strong>Duration:</strong> May 25, 2026 – July 10, 2026 (45 Days) &bull; Hyderabad
-  &bull; <strong>Impact:</strong> Site speed audit, Core Web Vitals optimization, JSON-LD structured data.
-`,
-    education: `
-<strong>Academic Background:</strong>
-  &bull; <strong>B.Tech in Computer Science & Engineering (2024 – 2028):</strong>
-    ICFAI Foundation for Higher Education (IFHE), Hyderabad &bull; Current CGPA: 7.07
-  &bull; <strong>Intermediate (MPC) (2022 – 2024):</strong> Royal Junior College &bull; 86.1%
-  &bull; <strong>SSC (2022):</strong> Geetha High School &bull; CGPA: 9.2 (Top 5%)
-`,
-    certifications: `
-<strong>Verified Industry Certifications:</strong>
-  &bull; Microsoft Azure: Cloud Concepts (Microsoft Learn &bull; Sep 2025)
-  &bull; Java Programming Fundamentals (Infosys Springboard &bull; Sep 2025)
-  &bull; Python Programming & Problem Solving (Kaggle &bull; Aug 2025)
-`,
-    contact: `
-<strong>Candidate Contact:</strong>
-  &bull; Email    : yadavabhiyadav456@gmail.com
-  &bull; Phone    : +91 9050514176
-  &bull; Location : Hyderabad, Telangana, India (Open to Relocation & Remote)
-  &bull; GitHub   : https://github.com/abhi-302-
-  &bull; LeetCode : https://leetcode.com/abhi_08_/
-`,
-    hire: `
-<strong>🚀 Candidate Value Proposition for SDE Roles:</strong>
-  1. <strong>Algorithmic Fluency:</strong> 150+ problems solved on LeetCode with continuous daily practice.
-  2. <strong>End-to-End System Builder:</strong> Strong grasp of how client, server, and relational DB interact.
-  3. <strong>Quality & Optimization Mindset:</strong> Industry experience in site performance, clean code, and schema design.
-  4. <strong>Quick Ramp-Up:</strong> Fast learner across tech stacks (Java, Python, JavaScript, Cloud).
-  <br><em>Ready for immediate technical interviews and internship/full-time onboarding!</em>
-`,
-    whoami: `
-<strong>Edulakanti Abhishek</strong>
-Aspiring Software Development Engineer &bull; B.Tech CSE Class of 2028 &bull; LeetCode handle: abhi_08_
-`,
-    resume: `Opening ATS Resume Modal...`
-  };
-
-  function executeCommand(rawCmd) {
-    const cmd = rawCmd.trim().toLowerCase();
-    if (!cmd) return;
-
-    if (cmd === 'clear') {
-      terminalHistory.innerHTML = '';
-      return;
-    }
-
-    if (cmd === 'resume') {
-      openResumeModal();
-    }
-
-    const outputBlock = document.createElement('div');
-    outputBlock.className = 'term-output-block';
-
-    const echo = document.createElement('div');
-    echo.className = 'cmd-echo';
-    echo.innerHTML = `<span style="color:#34d399">guest@abhishek-portfolio:~$</span> ${escapeHTML(rawCmd)}`;
-    outputBlock.appendChild(echo);
-
-    const res = document.createElement('div');
-    res.className = 'cmd-response';
-
-    if (commands[cmd]) {
-      res.innerHTML = commands[cmd];
-    } else {
-      res.innerHTML = `<span style="color:#ef4444">command not found: "${escapeHTML(cmd)}". Type <span class="term-cmd-highlight">help</span> for available commands.</span>`;
-    }
-
-    outputBlock.appendChild(res);
-    terminalHistory.appendChild(outputBlock);
-
-    // Auto-scroll terminal to bottom
-    const termBody = document.getElementById('cliTab');
-    if (termBody) {
-      termBody.scrollTop = termBody.scrollHeight;
-    }
-  }
-
-  function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, tag => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;',
-      '"': '&quot;'
-    }[tag] || tag));
-  }
-
-  if (terminalInput) {
-    terminalInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const val = terminalInput.value;
-        executeCommand(val);
-        terminalInput.value = '';
-      }
-    });
-  }
-
-  // Terminal Chip Click Shortcuts
-  document.querySelectorAll('.chip-cmd').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const cmd = chip.dataset.cmd;
-      if (cmd) {
-        executeCommand(cmd);
-        // Ensure CLI tab is visible
-        const cliTabBtn = document.querySelector('.term-tab[data-tab="cli"]');
-        if (cliTabBtn) cliTabBtn.click();
-      }
-    });
-  });
-
-  // 7. Project Filtering System
+  // 6. Project Filtering System
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
 
@@ -471,7 +303,6 @@ Aspiring Software Development Engineer &bull; B.Tech CSE Class of 2028 &bull; Le
   const openResumeBtn = document.getElementById('openResumeBtn');
   const viewResumeHeroBtn = document.getElementById('viewResumeHeroBtn');
   const openResumeBottomBtn = document.getElementById('openResumeBottomBtn');
-  const openResumeFromCheat = document.getElementById('openResumeFromCheat');
   const closeResumeBtn = document.getElementById('closeResumeBtn');
   const printResumeBtn = document.getElementById('printResumeBtn');
 
@@ -492,7 +323,6 @@ Aspiring Software Development Engineer &bull; B.Tech CSE Class of 2028 &bull; Le
   if (openResumeBtn) openResumeBtn.addEventListener('click', openResumeModal);
   if (viewResumeHeroBtn) viewResumeHeroBtn.addEventListener('click', openResumeModal);
   if (openResumeBottomBtn) openResumeBottomBtn.addEventListener('click', openResumeModal);
-  if (openResumeFromCheat) openResumeFromCheat.addEventListener('click', openResumeModal);
   if (closeResumeBtn) closeResumeBtn.addEventListener('click', closeResumeModal);
 
   // Print / Save as PDF
