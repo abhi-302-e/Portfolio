@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const roles = [
     'Scalable Systems & Full-Stack Apps',
     'Robust MySQL Relational Architectures',
-    'Algorithmic Solutions & LeetCode (150+)',
+    'Algorithmic Solutions & LeetCode (10+)',
     'IoT Sensor Telemetry & Embedded C'
   ];
   let roleIdx = 0;
