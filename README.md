@@ -1,0 +1,93 @@
+# Edulakanti Abhishek — Software Engineer & AI Systems Portfolio 🚀
+
+[![Live Portfolio](https://img.shields.io/badge/Live-Portfolio-6366f1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://abhi-302-e.github.io/Portfolio/)
+[![GitHub](https://img.shields.io/badge/GitHub-abhi--302--e-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/abhi-302-e/Portfolio)
+[![LeetCode](https://img.shields.io/badge/LeetCode-abhi__08__-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/abhi_08_/)
+
+An advanced, interactive developer portfolio featuring a **3D WebGL Three.js interactive animation engine**, **Vanilla-Tilt 3D card physics**, **developer terminal simulation**, and **ATS-optimized interactive resume**.
+
+---
+
+## 🌟 Featured Engineering Projects
+
+### 1. 🎓 AI Academic Decisions System
+*Predictive Student Success, Degree Audit Validation & Academic Decision Support*
+- **Architecture**: Distributed intelligence system coupling longitudinal student performance forecasting with explainable AI (SHAP) and a Directed Acyclic Graph (DAG) degree auditing engine.
+- **Key Innovations**:
+  - Early-risk attrition classification yielding 91.4% AUC-ROC on semester grade records.
+  - DAG-based prerequisite and corequisite degree rule traversal.
+  - Explainable feature attribution for academic counselor advisory workflows.
+- **Tech Stack**: Python, FastAPI, PyTorch, Scikit-Learn, PostgreSQL, Redis, React, Chart.js.
+
+### 2. 🏢 AI-Powered Enterprise Platform
+*Autonomous Multi-Agent Knowledge & Workflow Orchestration Engine*
+- **Architecture**: Production-ready enterprise AI operating platform integrating hybrid semantic-lexical Retrieval-Augmented Generation (RAG) and autonomous multi-agent task routing.
+- **Key Innovations**:
+  - Dense vector retrieval (Pinecone/Milvus) combined with BM25 keyword reranking for sub-250ms document Q&A.
+  - Event-driven multi-agent tool execution for enterprise workflows (CRM syncing, automated reports, compliance audits).
+  - Multi-tenant isolation with granular Role-Based Access Control (RBAC).
+- **Tech Stack**: Python, LangChain, FastAPI, Vector DB (Pinecone), Redis, PostgreSQL, Docker.
+
+### 3. 🍔 BiteSwift — End-to-End Food Ordering Platform
+- Decoupled client-server architecture with dynamic restaurant cataloging, persistent cart state synchronization, and simulated real-time order progression.
+- **Tech Stack**: Node.js, Express, JavaScript ES6+, HTML5, CSS3, REST APIs.
+
+### 4. 🏥 MediCare — Hospital & Clinical Database System
+- Rigorously normalized relational schema (3NF) eliminating update anomalies, featuring optimized multi-table SQL JOIN queries for billing and appointments.
+- **Tech Stack**: MySQL, Relational Database Modeling, Query Optimization, Transaction Management.
+
+### 5. ⚠️ AegisGas — Smart IoT Fire & Hazardous Gas Detection
+- Microcontroller-driven hardware telemetry system combining MQ-2 gas sensors and flame detectors with sub-second interrupt service routine alarms.
+- **Tech Stack**: Embedded C, MQ-2 Gas Sensor, Flame Sensor, Microcontroller, Safety Telemetry.
+
+---
+
+## 🔮 3D Interactive Animation & Visual Physics
+
+This portfolio uses modern 3D graphics libraries:
+- **Three.js (WebGL)**:
+  - Deep-space 3D interactive particle field with glowing vertex shaders.
+  - Rotating holographic 3D wireframe icosahedron and dual-axis orbiting cyber torus rings.
+  - Smooth camera parallax reacting to mouse cursor coordinates with inertial damping (lerp).
+  - Dynamic Z-axis camera travel driven by scroll progression.
+- **Vanilla-Tilt.js**:
+  - Real-time 3D card perspective tilt (`preserve-3d`, `translateZ`) with dynamic specular glare on cards and badges.
+- **Responsive & Accessible**:
+  - Fluid mobile navigation, keyboard accessibility, and optimized rendering loops.
+
+---
+
+## 🛠️ Tech Stack & Architecture
+
+- **Core**: HTML5 (Semantic & Accessible), CSS3 (Custom Variables, Flexbox, CSS Grid), Vanilla JavaScript (ES6+)
+- **3D & Graphics Plugins**: [Three.js](https://threejs.org/) (r128), [Vanilla-Tilt.js](https://micku7zu.github.io/vanilla-tilt.js/)
+- **Typography & Icons**: Plus Jakarta Sans, JetBrains Mono, FontAwesome 6
+- **Hosting / CI**: GitHub Pages / Git
+
+---
+
+## 🚀 Running Locally
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/abhi-302-e/Portfolio.git
+   cd Portfolio
+   ```
+2. Open `index.html` in your browser, or start a local live server:
+   ```bash
+   npx serve .
+   # or with python:
+   python -m http.server 8000
+   ```
+3. Open `http://localhost:8000` in your web browser.
+
+---
+
+## 📬 Contact & Connect
+
+- **Engineer**: Edulakanti Abhishek
+- **Degree**: B.Tech in Computer Science & Engineering (IFHE Hyderabad)
+- **Email**: [yadavabhiyadav456@gmail.com](mailto:yadavabhiyadav456@gmail.com)
+- **Phone**: +91 90505 14176
+- **GitHub**: [github.com/abhi-302-e](https://github.com/abhi-302-e)
+- **LeetCode**: [leetcode.com/abhi_08_](https://leetcode.com/abhi_08_)
