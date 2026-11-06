@@ -196,20 +196,20 @@ document.addEventListener('DOMContentLoaded', () => {
   // 8. Project Architecture Case Study Modals
   const projectData = {
     aiacademic: {
-      title: 'AI Academic Decisions System — Predictive Student Success & Advising Platform',
+      title: 'AI Academic Decision System — Predictive Student Success & Advising Platform',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
           <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <a href="https://github.com/abhi-302-e/AI-Academic-Decisions-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            <a href="https://ai-academic-decision-system.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Streamlit App
             </a>
-            <a href="https://github.com/abhi-302-e/AI-Academic-Decisions-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> GitHub Repository
+            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> Source Code
             </a>
           </div>
 
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">System Architecture & Overview</h4>
-          <p>The AI Academic Decisions System is an institutional-grade intelligence platform engineered to empower universities, department heads, and academic advisors with proactive student retention forecasts, automated graduation degree audits, and explainable intervention paths.</p>
+          <p>The AI Academic Decision System is an institutional-grade intelligence platform engineered to empower universities, department heads, and academic advisors with proactive student retention forecasts, automated graduation degree audits, and explainable intervention paths.</p>
           
           <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; border: 1px solid var(--border-subtle); margin: 16px 0; font-family: var(--font-mono); font-size: 0.80rem; color: #c084fc; overflow-x: auto; white-space: pre; line-height: 1.4;">
 [SIS & LMS Data Feeds: Grades / Attendance / Course Catalogs]
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [FastAPI Microservice Layer & Redis Cache]
                          │
                          ▼
-   [Advisor Dashboard & Student Success Portal (React / Chart.js)]
+   [Streamlit Cloud Interactive Portal & Counselor Dashboard]
           </div>
 
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Key Engineering Innovations:</h4>
@@ -240,25 +240,25 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
 
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Tech Stack:</h4>
-          <p style="color: var(--text-muted);">Python &bull; FastAPI &bull; Scikit-Learn &bull; PyTorch &bull; PostgreSQL &bull; Redis &bull; React &bull; Chart.js &bull; SHAP</p>
+          <p style="color: var(--text-muted);">Python &bull; Streamlit &bull; FastAPI &bull; Scikit-Learn &bull; PyTorch &bull; PostgreSQL &bull; Redis &bull; SHAP</p>
         </div>
       `
     },
     aienterprise: {
-      title: 'AI-Powered Enterprise — Multi-Agent Knowledge & Workflow Orchestration Engine',
+      title: 'AI-Powered Enterprise Decision System — Multi-Agent Intelligence Engine',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
           <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <a href="https://github.com/abhi-302-e/AI-Powered-Enterprise" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            <a href="https://ai-powered-enterprise-decision-system.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Streamlit App
             </a>
-            <a href="https://github.com/abhi-302-e/AI-Powered-Enterprise" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> GitHub Repository
+            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> Source Code
             </a>
           </div>
 
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Distributed Multi-Agent & RAG Architecture</h4>
-          <p>AI-Powered Enterprise is a secure, autonomous intelligence backbone designed for enterprise organizations. It unifies distributed enterprise knowledge (contracts, technical documentation, SQL databases, customer tickets) into real-time multi-agent workflows with strict role-based access boundaries.</p>
+          <p>AI-Powered Enterprise Decision System is a secure, autonomous intelligence backbone designed for enterprise organizations. It unifies distributed enterprise knowledge (contracts, technical documentation, SQL databases, customer tickets) into real-time multi-agent workflows with strict role-based access boundaries.</p>
           
           <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; border: 1px solid var(--border-subtle); margin: 16px 0; font-family: var(--font-mono); font-size: 0.80rem; color: #2dd4bf; overflow-x: auto; white-space: pre; line-height: 1.4;">
 [Enterprise Ingestion: PDFs / Confluence / Jira / CRM / SQL Data]
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         [FastAPI Streaming Gateway (SSE / WebSockets)]
                          │
                          ▼
-    [Enterprise Web Workspace with Citation Transparency]
+    [Streamlit Enterprise Workspace with Citation Transparency]
           </div>
 
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Key Engineering Innovations:</h4>
@@ -292,30 +292,30 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
 
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Tech Stack:</h4>
-          <p style="color: var(--text-muted);">Python &bull; LangChain &bull; FastAPI &bull; Vector DB (Pinecone/Milvus) &bull; Redis &bull; PostgreSQL &bull; Docker &bull; TypeScript</p>
+          <p style="color: var(--text-muted);">Python &bull; Streamlit &bull; LangChain &bull; FastAPI &bull; Vector DB (Pinecone) &bull; Redis &bull; PostgreSQL</p>
         </div>
       `
     },
     biteswift: {
-      title: 'BiteSwift — End-to-End Food Ordering Platform',
+      title: 'Food Delight — Online Food Ordering Platform',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
           <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <a href="https://github.com/abhi-302-e/BiteSwift-Food-Ordering" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            <a href="https://food-delight.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Launch Live Streamlit App
             </a>
-            <a href="https://github.com/abhi-302-e/BiteSwift-Food-Ordering" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> GitHub Repository
+            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> Source Code
             </a>
           </div>
 
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">System Architecture & Overview</h4>
-          <p>BiteSwift is designed as a decoupled client-server architecture with an asynchronous Node.js and Express backend handling catalog filtering, customer session verification, and simulated real-time order progression.</p>
+          <p>Food Delight is an interactive web platform designed for streamlined food ordering, featuring dynamic restaurant cataloging, real-time cart state management, and responsive customer checkout flows.</p>
           
           <div style="background: rgba(0,0,0,0.4); padding: 16px; border-radius: 8px; border: 1px solid var(--border-subtle); margin: 16px 0; font-family: var(--font-mono); font-size: 0.82rem; color: #38bdf8;">
             [Browser / Client] 
-                 &uarr;&darr; REST / JSON
-            [Express Gateway & Auth Middleware]
+                 &uarr;&darr; Interactive Streamlit & Session State
+            [Catalog & Restaurant Engine]
                  &uarr;&darr; Controller Dispatch
             [Menu & Cart State Engine] &harr; [Order Lifecycle Tracker]
           </div>
@@ -323,12 +323,12 @@ document.addEventListener('DOMContentLoaded', () => {
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Key Engineering Highlights:</h4>
           <ul style="margin-left: 20px; color: #cbd5e1;">
             <li><strong>State Management:</strong> Implemented persistent local cart storage with quantity synchronizers and item modifiers.</li>
-            <li><strong>RESTful API Design:</strong> Structured clean endpoints for <code>/api/restaurants</code>, <code>/api/cart</code>, and <code>/api/orders/checkout</code>.</li>
-            <li><strong>Responsive UI:</strong> Mobile-first checkout experience with micro-animations and zero dependency UI widgets.</li>
+            <li><strong>Interactive UI:</strong> Responsive ordering flow with instant price recalculations, discounts, and item filtering.</li>
+            <li><strong>Real-Time Simulation:</strong> Order progression lifecycle tracking from placement to dispatch.</li>
           </ul>
 
           <h4 style="color: #ffffff; margin: 16px 0 8px;">Tech Stack:</h4>
-          <p style="color: var(--text-muted);">Node.js &bull; Express &bull; Modern JavaScript (ES6+) &bull; HTML5 &bull; CSS3 Custom Properties</p>
+          <p style="color: var(--text-muted);">Python &bull; Streamlit &bull; JavaScript &bull; HTML5 &bull; CSS3 Custom Styling</p>
         </div>
       `
     },
@@ -336,15 +336,6 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'MediCare — Hospital Management & Clinical Database System',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
-          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <a href="https://github.com/abhi-302-e/MediCare-Hospital-Database-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
-            </a>
-            <a href="https://github.com/abhi-302-e/MediCare-Hospital-Database-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> GitHub Repository
-            </a>
-          </div>
-
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Relational Database Design (3NF)</h4>
           <p>MediCare addresses healthcare data redundancy, inconsistent doctor scheduling, and disparate invoice generation through a rigorously normalized relational model.</p>
           
@@ -370,15 +361,6 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'AegisGas — Smart IoT Fire & Hazardous Gas Detection System',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
-          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
-            <a href="https://github.com/abhi-302-e/AegisGas-IoT-Detection-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
-            </a>
-            <a href="https://github.com/abhi-302-e/AegisGas-IoT-Detection-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> GitHub Repository
-            </a>
-          </div>
-
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Hardware-Software Telemetry Architecture</h4>
           <p>AegisGas protects industrial labs and residential spaces by sampling ambient air pollutants (LPG, methane, smoke) and infrared flame signatures with sub-second interrupt processing.</p>
           

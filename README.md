@@ -10,39 +10,37 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ## 🌟 Featured Engineering Projects
 
-### 1. 🎓 AI Academic Decisions System
+### 1. 🎓 AI Academic Decision System
 *Predictive Student Success, Degree Audit Validation & Academic Decision Support*
-- **Project Link**: [github.com/abhi-302-e/AI-Academic-Decisions-System](https://github.com/abhi-302-e/AI-Academic-Decisions-System)
+- **Live Streamlit App**: [ai-academic-decision-system.streamlit.app](https://ai-academic-decision-system.streamlit.app/)
 - **Architecture**: Distributed intelligence system coupling longitudinal student performance forecasting with explainable AI (SHAP) and a Directed Acyclic Graph (DAG) degree auditing engine.
 - **Key Innovations**:
   - Early-risk attrition classification yielding 91.4% AUC-ROC on semester grade records.
   - DAG-based prerequisite and corequisite degree rule traversal.
   - Explainable feature attribution for academic counselor advisory workflows.
-- **Tech Stack**: Python, FastAPI, PyTorch, Scikit-Learn, PostgreSQL, Redis, React, Chart.js.
+- **Tech Stack**: Python, Streamlit, FastAPI, PyTorch, Scikit-Learn, PostgreSQL, Redis, SHAP.
 
-### 2. 🏢 AI-Powered Enterprise Platform
+### 2. 🏢 AI-Powered Enterprise Decision System
 *Autonomous Multi-Agent Knowledge & Workflow Orchestration Engine*
-- **Project Link**: [github.com/abhi-302-e/AI-Powered-Enterprise](https://github.com/abhi-302-e/AI-Powered-Enterprise)
+- **Live Streamlit App**: [ai-powered-enterprise-decision-system.streamlit.app](https://ai-powered-enterprise-decision-system.streamlit.app/)
 - **Architecture**: Production-ready enterprise AI operating platform integrating hybrid semantic-lexical Retrieval-Augmented Generation (RAG) and autonomous multi-agent task routing.
 - **Key Innovations**:
   - Dense vector retrieval (Pinecone/Milvus) combined with BM25 keyword reranking for sub-250ms document Q&A.
   - Event-driven multi-agent tool execution for enterprise workflows (CRM syncing, automated reports, compliance audits).
   - Multi-tenant isolation with granular Role-Based Access Control (RBAC).
-- **Tech Stack**: Python, LangChain, FastAPI, Vector DB (Pinecone), Redis, PostgreSQL, Docker.
+- **Tech Stack**: Python, Streamlit, LangChain, FastAPI, Vector DB (Pinecone), Redis, PostgreSQL.
 
-### 3. 🍔 BiteSwift — End-to-End Food Ordering Platform
-- **Project Link**: [github.com/abhi-302-e/BiteSwift-Food-Ordering](https://github.com/abhi-302-e/BiteSwift-Food-Ordering)
-- Decoupled client-server architecture with dynamic restaurant cataloging, persistent cart state synchronization, and simulated real-time order progression.
-- **Tech Stack**: Node.js, Express, JavaScript ES6+, HTML5, CSS3, REST APIs.
+### 3. 🍔 Food Delight — Online Food Ordering Platform
+- **Live Streamlit App**: [food-delight.streamlit.app](https://food-delight.streamlit.app/)
+- Comprehensive interactive web application featuring dynamic restaurant cataloging, persistent cart state management, and real-time order lifecycle tracking.
+- **Tech Stack**: Python, Streamlit, JavaScript ES6+, HTML5, CSS3, REST APIs.
 
 ### 4. 🏥 MediCare — Hospital & Clinical Database System
-- **Project Link**: [github.com/abhi-302-e/MediCare-Hospital-Database-System](https://github.com/abhi-302-e/MediCare-Hospital-Database-System)
 - Rigorously normalized relational schema (3NF) eliminating update anomalies, featuring optimized multi-table SQL JOIN queries for billing and appointments.
 - **Tech Stack**: MySQL, Relational Database Modeling, Query Optimization, Transaction Management.
 
 ### 5. ⚠️ AegisGas — Smart IoT Fire & Hazardous Gas Detection
-- **Project Link**: [github.com/abhi-302-e/AegisGas-IoT-Detection-System](https://github.com/abhi-302-e/AegisGas-IoT-Detection-System)
-- Microcontroller-driven hardware telemetry system combining MQ-2 gas sensors and flame detectors with sub-second interrupt service routine alarms.
+- Microcontroller-driven hardware safety system combining MQ-2 gas sensors and optical flame detectors with sub-second interrupt service routine alarms.
 - **Tech Stack**: Embedded C, MQ-2 Gas Sensor, Flame Sensor, Microcontroller, Safety Telemetry.
 
 ---
