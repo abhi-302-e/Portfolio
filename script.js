@@ -668,7 +668,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cyberGroup.position.set(240, 30, -80);
     scene.add(cyberGroup);
 
-    // C. Interaction Controls: Mouse & Scroll
+    // C. Interaction Controls: Mouse, Touch & Scroll
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -680,6 +680,26 @@ document.addEventListener('DOMContentLoaded', () => {
       mouseX = (e.clientX - halfX);
       mouseY = (e.clientY - halfY);
     }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        mouseX = (e.touches[0].clientX - halfX);
+        mouseY = (e.touches[0].clientY - halfY);
+      }
+    }, { passive: true });
+
+    // Interactive Click on 3D Engine Badge
+    const badge3D = document.querySelector('.badge-top-left');
+    if (badge3D) {
+      badge3D.style.cursor = 'pointer';
+      badge3D.setAttribute('title', 'Click to pulse 3D engine');
+      badge3D.addEventListener('click', () => {
+        showToast('3D WebGL Acceleration: Three.js & Vanilla-Tilt active!', 'fa-cube');
+        targetX += (Math.random() - 0.5) * 200;
+        targetY += (Math.random() - 0.5) * 200;
+        cyberGroup.rotation.y += 0.5;
+      });
+    }
 
     let scrollY = window.pageYOffset;
     window.addEventListener('scroll', () => {
