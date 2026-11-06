@@ -199,6 +199,15 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'AI Academic Decisions System — Predictive Student Success & Advising Platform',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <a href="https://github.com/abhi-302-e/AI-Academic-Decisions-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            </a>
+            <a href="https://github.com/abhi-302-e/AI-Academic-Decisions-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Repository
+            </a>
+          </div>
+
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">System Architecture & Overview</h4>
           <p>The AI Academic Decisions System is an institutional-grade intelligence platform engineered to empower universities, department heads, and academic advisors with proactive student retention forecasts, automated graduation degree audits, and explainable intervention paths.</p>
           
@@ -239,6 +248,15 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'AI-Powered Enterprise — Multi-Agent Knowledge & Workflow Orchestration Engine',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <a href="https://github.com/abhi-302-e/AI-Powered-Enterprise" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            </a>
+            <a href="https://github.com/abhi-302-e/AI-Powered-Enterprise" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Repository
+            </a>
+          </div>
+
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Distributed Multi-Agent & RAG Architecture</h4>
           <p>AI-Powered Enterprise is a secure, autonomous intelligence backbone designed for enterprise organizations. It unifies distributed enterprise knowledge (contracts, technical documentation, SQL databases, customer tickets) into real-time multi-agent workflows with strict role-based access boundaries.</p>
           
@@ -282,6 +300,15 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'BiteSwift — End-to-End Food Ordering Platform',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <a href="https://github.com/abhi-302-e/BiteSwift-Food-Ordering" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            </a>
+            <a href="https://github.com/abhi-302-e/BiteSwift-Food-Ordering" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Repository
+            </a>
+          </div>
+
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">System Architecture & Overview</h4>
           <p>BiteSwift is designed as a decoupled client-server architecture with an asynchronous Node.js and Express backend handling catalog filtering, customer session verification, and simulated real-time order progression.</p>
           
@@ -309,6 +336,15 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'MediCare — Hospital Management & Clinical Database System',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <a href="https://github.com/abhi-302-e/MediCare-Hospital-Database-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            </a>
+            <a href="https://github.com/abhi-302-e/MediCare-Hospital-Database-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Repository
+            </a>
+          </div>
+
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Relational Database Design (3NF)</h4>
           <p>MediCare addresses healthcare data redundancy, inconsistent doctor scheduling, and disparate invoice generation through a rigorously normalized relational model.</p>
           
@@ -334,6 +370,15 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'AegisGas — Smart IoT Fire & Hazardous Gas Detection System',
       body: `
         <div style="font-family: var(--font-sans); line-height: 1.7;">
+          <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+            <a href="https://github.com/abhi-302-e/AegisGas-IoT-Detection-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Project Link
+            </a>
+            <a href="https://github.com/abhi-302-e/AegisGas-IoT-Detection-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Repository
+            </a>
+          </div>
+
           <h4 style="color: var(--accent-secondary-light); margin-bottom: 8px;">Hardware-Software Telemetry Architecture</h4>
           <p>AegisGas protects industrial labs and residential spaces by sampling ambient air pollutants (LPG, methane, smoke) and infrared flame signatures with sub-second interrupt processing.</p>
           

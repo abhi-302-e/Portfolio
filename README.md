@@ -12,6 +12,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ### 1. 🎓 AI Academic Decisions System
 *Predictive Student Success, Degree Audit Validation & Academic Decision Support*
+- **Project Link**: [github.com/abhi-302-e/AI-Academic-Decisions-System](https://github.com/abhi-302-e/AI-Academic-Decisions-System)
 - **Architecture**: Distributed intelligence system coupling longitudinal student performance forecasting with explainable AI (SHAP) and a Directed Acyclic Graph (DAG) degree auditing engine.
 - **Key Innovations**:
   - Early-risk attrition classification yielding 91.4% AUC-ROC on semester grade records.
@@ -21,6 +22,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ### 2. 🏢 AI-Powered Enterprise Platform
 *Autonomous Multi-Agent Knowledge & Workflow Orchestration Engine*
+- **Project Link**: [github.com/abhi-302-e/AI-Powered-Enterprise](https://github.com/abhi-302-e/AI-Powered-Enterprise)
 - **Architecture**: Production-ready enterprise AI operating platform integrating hybrid semantic-lexical Retrieval-Augmented Generation (RAG) and autonomous multi-agent task routing.
 - **Key Innovations**:
   - Dense vector retrieval (Pinecone/Milvus) combined with BM25 keyword reranking for sub-250ms document Q&A.
@@ -29,14 +31,17 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 - **Tech Stack**: Python, LangChain, FastAPI, Vector DB (Pinecone), Redis, PostgreSQL, Docker.
 
 ### 3. 🍔 BiteSwift — End-to-End Food Ordering Platform
+- **Project Link**: [github.com/abhi-302-e/BiteSwift-Food-Ordering](https://github.com/abhi-302-e/BiteSwift-Food-Ordering)
 - Decoupled client-server architecture with dynamic restaurant cataloging, persistent cart state synchronization, and simulated real-time order progression.
 - **Tech Stack**: Node.js, Express, JavaScript ES6+, HTML5, CSS3, REST APIs.
 
 ### 4. 🏥 MediCare — Hospital & Clinical Database System
+- **Project Link**: [github.com/abhi-302-e/MediCare-Hospital-Database-System](https://github.com/abhi-302-e/MediCare-Hospital-Database-System)
 - Rigorously normalized relational schema (3NF) eliminating update anomalies, featuring optimized multi-table SQL JOIN queries for billing and appointments.
 - **Tech Stack**: MySQL, Relational Database Modeling, Query Optimization, Transaction Management.
 
 ### 5. ⚠️ AegisGas — Smart IoT Fire & Hazardous Gas Detection
+- **Project Link**: [github.com/abhi-302-e/AegisGas-IoT-Detection-System](https://github.com/abhi-302-e/AegisGas-IoT-Detection-System)
 - Microcontroller-driven hardware telemetry system combining MQ-2 gas sensors and flame detectors with sub-second interrupt service routine alarms.
 - **Tech Stack**: Embedded C, MQ-2 Gas Sensor, Flame Sensor, Microcontroller, Safety Telemetry.
 
@@ -91,3 +96,4 @@ This portfolio uses modern 3D graphics libraries:
 - **Phone**: +91 90505 14176
 - **GitHub**: [github.com/abhi-302-e](https://github.com/abhi-302-e)
 - **LeetCode**: [leetcode.com/abhi_08_](https://leetcode.com/abhi_08_)
+

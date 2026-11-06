@@ -1230,11 +1230,37 @@ a {
   color: #e2e8f0;
 }
 
+.project-title-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.project-title-link:hover {
+  color: var(--accent-secondary-light);
+}
+
+.title-ext-icon {
+  font-size: 0.72em;
+  opacity: 0.65;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.project-title-link:hover .title-ext-icon {
+  transform: translate(2px, -2px);
+  opacity: 1;
+}
+
 .project-footer {
   display: flex;
   gap: 10px;
   padding-top: 18px;
   border-top: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 /* ==========================================================================
