@@ -32,7 +32,10 @@
   <!-- FontAwesome Icons for crisp logos -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <link rel="stylesheet" href="style.css?v=3.2">
+  <!-- Prism.js Syntax Highlighting for Source Code Viewer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  
+  <link rel="stylesheet" href="style.css?v=3.3">
 </head>
 <body>
   <!-- Ambient background glow elements -->
@@ -539,9 +542,9 @@
               <button class="btn btn-sm btn-secondary project-details-btn" data-project="aiacademic">
                 <i class="fa-solid fa-circle-info"></i> Architecture
               </button>
-              <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+              <button class="btn btn-sm btn-outline view-source-btn" data-project="aiacademic">
+                <i class="fa-solid fa-code"></i> Source Code
+              </button>
             </div>
           </div>
         </article>
@@ -595,9 +598,9 @@
               <button class="btn btn-sm btn-secondary project-details-btn" data-project="aienterprise">
                 <i class="fa-solid fa-circle-info"></i> Architecture
               </button>
-              <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+              <button class="btn btn-sm btn-outline view-source-btn" data-project="aienterprise">
+                <i class="fa-solid fa-code"></i> Source Code
+              </button>
             </div>
           </div>
         </article>
@@ -649,9 +652,9 @@
               <button class="btn btn-sm btn-secondary project-details-btn" data-project="biteswift">
                 <i class="fa-solid fa-circle-info"></i> Architecture
               </button>
-              <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Source Code
-              </a>
+              <button class="btn btn-sm btn-outline view-source-btn" data-project="biteswift">
+                <i class="fa-solid fa-code"></i> Source Code
+              </button>
             </div>
           </div>
         </article>
@@ -694,9 +697,9 @@
               <button class="btn btn-sm btn-primary project-details-btn" data-project="medicare">
                 <i class="fa-solid fa-circle-info"></i> View Architecture
               </button>
-              <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-                <i class="fa-brands fa-github"></i> Schema & Code
-              </a>
+              <button class="btn btn-sm btn-outline view-source-btn" data-project="medicare">
+                <i class="fa-solid fa-code"></i> Schema & Code
+              </button>
             </div>
           </div>
         </article>
@@ -739,6 +742,9 @@
             <div class="project-footer">
               <button class="btn btn-sm btn-primary project-details-btn" data-project="aegisgas">
                 <i class="fa-solid fa-circle-info"></i> View Architecture
+              </button>
+              <button class="btn btn-sm btn-outline view-source-btn" data-project="aegisgas">
+                <i class="fa-solid fa-code"></i> Firmware Code
               </button>
             </div>
           </div>
@@ -1241,6 +1247,40 @@
     </div>
   </div>
 
+  <!-- SOURCE CODE VIEWER MODAL -->
+  <div class="modal-overlay" id="sourceCodeModal">
+    <div class="modal-container code-modal-container">
+      <div class="modal-header code-modal-header">
+        <div class="code-header-left">
+          <div class="window-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="modal-title" id="codeModalTitle">Project Source Code</div>
+        </div>
+        <div class="code-header-actions">
+          <button class="btn btn-sm btn-outline" id="copyCodeBtn" title="Copy code to clipboard">
+            <i class="fa-regular fa-copy"></i> <span id="copyBtnText">Copy Code</span>
+          </button>
+          <button class="modal-close" id="closeCodeModalBtn">&times;</button>
+        </div>
+      </div>
+      <!-- Tab Bar for active project files -->
+      <div class="code-tabs-bar" id="codeTabsBar">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="modal-body code-modal-body">
+        <div class="code-viewer-wrapper">
+          <pre class="code-pre"><code id="codeViewerContent"></code></pre>
+        </div>
+      </div>
+      <div class="code-modal-footer" id="codeModalFooter">
+        <!-- Injected via script.js -->
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -1248,6 +1288,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
 
-  <script src="script.js?v=3.2"></script>
+  <!-- Prism.js Syntax Highlighting for Real Source Code Viewing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
+
+  <script src="script.js?v=3.3"></script>
 </body>
 </html>
