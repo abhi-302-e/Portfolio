@@ -13,6 +13,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 ### 1. 🎓 AI Academic Decision System
 *Predictive Student Success, Degree Audit Validation & Academic Decision Support*
 - **Live Streamlit App**: [ai-academic-decision-system.streamlit.app](https://ai-academic-decision-system.streamlit.app/)
+- **Source Code**: [github.com/abhi-302-e/AI-Academic-Decision-System](https://github.com/abhi-302-e/AI-Academic-Decision-System)
 - **Architecture**: Distributed intelligence system coupling longitudinal student performance forecasting with explainable AI (SHAP) and a Directed Acyclic Graph (DAG) degree auditing engine.
 - **Key Innovations**:
   - Early-risk attrition classification yielding 91.4% AUC-ROC on semester grade records.
@@ -23,6 +24,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 ### 2. 🏢 AI-Powered Enterprise Decision System
 *Autonomous Multi-Agent Knowledge & Workflow Orchestration Engine*
 - **Live Streamlit App**: [ai-powered-enterprise-decision-system.streamlit.app](https://ai-powered-enterprise-decision-system.streamlit.app/)
+- **Source Code**: [github.com/abhi-302-e/-AI-Powered-Enterprise-Decision-Systems](https://github.com/abhi-302-e/-AI-Powered-Enterprise-Decision-Systems)
 - **Architecture**: Production-ready enterprise AI operating platform integrating hybrid semantic-lexical Retrieval-Augmented Generation (RAG) and autonomous multi-agent task routing.
 - **Key Innovations**:
   - Dense vector retrieval (Pinecone/Milvus) combined with BM25 keyword reranking for sub-250ms document Q&A.
@@ -32,6 +34,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ### 3. 🍔 Food Delight — Online Food Ordering Platform
 - **Live Streamlit App**: [food-delight.streamlit.app](https://food-delight.streamlit.app/)
+- **Source Code**: [github.com/abhi-302-e/Food-Delight](https://github.com/abhi-302-e/Food-Delight)
 - Comprehensive interactive web application featuring dynamic restaurant cataloging, persistent cart state management, and real-time order lifecycle tracking.
 - **Tech Stack**: Python, Streamlit, JavaScript ES6+, HTML5, CSS3, REST APIs.
 

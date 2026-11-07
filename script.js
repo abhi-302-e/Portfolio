@@ -206,8 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-sm btn-outline open-code-from-modal" data-project="aiacademic">
               <i class="fa-solid fa-code"></i> View Source Code
             </button>
-            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> Repository
+            <a href="https://github.com/abhi-302-e/AI-Academic-Decision-System" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Source Code
             </a>
           </div>
 
@@ -258,8 +258,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-sm btn-outline open-code-from-modal" data-project="aienterprise">
               <i class="fa-solid fa-code"></i> View Source Code
             </button>
-            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> Repository
+            <a href="https://github.com/abhi-302-e/-AI-Powered-Enterprise-Decision-Systems" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Source Code
             </a>
           </div>
 
@@ -313,8 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <button class="btn btn-sm btn-outline open-code-from-modal" data-project="biteswift">
               <i class="fa-solid fa-code"></i> View Source Code
             </button>
-            <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-              <i class="fa-brands fa-github"></i> Repository
+            <a href="https://github.com/abhi-302-e/Food-Delight" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+              <i class="fa-brands fa-github"></i> GitHub Source Code
             </a>
           </div>
 
@@ -786,6 +786,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aiacademic: {
       title: 'AI Academic Decision System',
       liveUrl: 'https://ai-academic-decision-system.streamlit.app/',
+      repoUrl: 'https://github.com/abhi-302-e/AI-Academic-Decision-System',
       files: [
         {
           name: 'app.py',
@@ -998,6 +999,7 @@ uvicorn>=0.28.0`
     aienterprise: {
       title: 'AI-Powered Enterprise Decision System',
       liveUrl: 'https://ai-powered-enterprise-decision-system.streamlit.app/',
+      repoUrl: 'https://github.com/abhi-302-e/-AI-Powered-Enterprise-Decision-Systems',
       files: [
         {
           name: 'app.py',
@@ -1131,6 +1133,7 @@ redis>=5.0.3`
     biteswift: {
       title: 'Food Delight — Online Food Ordering Platform',
       liveUrl: 'https://food-delight.streamlit.app/',
+      repoUrl: 'https://github.com/abhi-302-e/Food-Delight',
       files: [
         {
           name: 'app.py',
@@ -1468,9 +1471,10 @@ void triggerEmergencyState(float gasPpm) {
         `;
       }
 
+      const targetRepo = proj.repoUrl || 'https://github.com/abhi-302-e/Portfolio';
       footerHtml += `
-          <a href="https://github.com/abhi-302-e/Portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
-            <i class="fa-brands fa-github"></i> GitHub Repository
+          <a href="${targetRepo}" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline">
+            <i class="fa-brands fa-github"></i> View on GitHub
           </a>
         </div>
       `;
