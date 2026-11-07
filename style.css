@@ -98,7 +98,17 @@ body {
 }
 
 #webglCanvas {
-  opacity: 0.85;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+#webglCanvas.interactive {
+  pointer-events: auto !important;
+  cursor: grab;
+}
+
+#webglCanvas.interactive:active {
+  cursor: grabbing;
 }
 
 .ambient-glow {
@@ -2535,4 +2545,279 @@ a {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+/* ==========================================================================
+   HERO 3D STAGE & SWITCHER
+   ========================================================================== */
+.hero-stage-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  padding: 5px;
+  border-radius: var(--radius-full);
+  margin-bottom: 18px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 5;
+}
+
+.stage-switch-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.stage-switch-btn:hover {
+  color: #ffffff;
+}
+
+.stage-switch-btn.active {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+}
+
+.hero-3d-stage-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 420px;
+  margin: 0 auto;
+  border-radius: 36px;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.15) 0%, rgba(15, 23, 42, 0.7) 70%);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 0 40px rgba(6, 182, 212, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  overflow: hidden;
+  animation: modal-pop 0.4s ease;
+}
+
+.stage-3d-hint {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-secondary-light);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stage-3d-badge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   FLOATING 3D INTERACTIVE STUDIO HUD
+   ========================================================================== */
+.hud-3d-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.hud-3d-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #6366f1 0%, #06b6d4 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.5), 0 0 20px rgba(6, 182, 212, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud-3d-toggle-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 14px 30px rgba(99, 102, 241, 0.6), 0 0 25px rgba(6, 182, 212, 0.5);
+}
+
+.hud-3d-panel {
+  display: none;
+  width: 320px;
+  background: rgba(13, 17, 23, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(99, 102, 241, 0.25);
+  overflow: hidden;
+  animation: modal-pop 0.25s ease;
+}
+
+.hud-3d-panel.active {
+  display: block;
+}
+
+.hud-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #161b22;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hud-title {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.hud-close:hover {
+  color: #ffffff;
+}
+
+.hud-body {
+  padding: 14px;
+}
+
+.hud-tip {
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.hud-tip strong {
+  color: #38bdf8;
+}
+
+.hud-btn-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.hud-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.hud-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: #ffffff;
+}
+
+.hud-btn.active {
+  background: rgba(6, 182, 212, 0.25);
+  border-color: #06b6d4;
+  color: #38bdf8;
+}
+
+.hud-status {
+  font-family: var(--font-mono);
+  font-size: 0.70rem;
+  color: #34d399;
+  text-align: center;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* 3D Depth Layer Elevation on Cards */
+.project-card, .metric-card, .skill-category-card, .photo-card-wrapper {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.project-card:hover .project-banner {
+  transform: translateZ(35px);
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .project-name {
+  transform: translateZ(45px);
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .project-highlights {
+  transform: translateZ(25px);
+  transition: transform 0.25s ease;
+}
+
+.project-card:hover .project-footer {
+  transform: translateZ(40px);
+  transition: transform 0.25s ease;
+}
+
+.photo-card-wrapper:hover .floating-badge {
+  transform: translateZ(55px);
+  transition: transform 0.3s ease;
 }

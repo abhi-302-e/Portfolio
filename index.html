@@ -35,7 +35,7 @@
   <!-- Prism.js Syntax Highlighting for Source Code Viewer -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
   
-  <link rel="stylesheet" href="style.css?v=3.4">
+  <link rel="stylesheet" href="style.css?v=3.5">
 </head>
 <body>
   <!-- Ambient background glow elements -->
@@ -187,9 +187,28 @@
           </div>
         </div>
 
-        <!-- Right: Profile Visual Frame with User's Photo -->
+        <!-- Right: Profile Visual Frame with User's Photo & 3D Stage -->
         <div class="hero-visual">
-          <div class="photo-card-wrapper" data-tilt data-tilt-max="6">
+          <div class="hero-stage-switch">
+            <button class="stage-switch-btn active" id="stagePhotoBtn" title="View Profile Photo">
+              <i class="fa-solid fa-id-badge"></i> Profile Card
+            </button>
+            <button class="stage-switch-btn" id="stage3DBtn" title="View Interactive 3D Cyber Core">
+              <i class="fa-solid fa-cube fa-spin" style="--fa-animation-duration: 5s;"></i> 3D Cyber Core
+            </button>
+          </div>
+
+          <!-- 3D Interactive Stage Canvas Container (Shown when 3D Cyber Core is active) -->
+          <div class="hero-3d-stage-wrapper" id="hero3DStageWrapper" style="display: none;">
+            <div class="stage-3d-hint">
+              <i class="fa-solid fa-arrows-up-down-left-right"></i> Drag to spin 3D core &bull; Scroll to zoom
+            </div>
+            <div class="stage-3d-badge">
+              <span class="live-dot-pulse"></span> WebGL 3D Realtime
+            </div>
+          </div>
+
+          <div class="photo-card-wrapper" id="heroPhotoWrapper" data-tilt data-tilt-max="8">
             <div class="glow-backdrop"></div>
             
             <div class="photo-frame">
@@ -1290,6 +1309,31 @@
     </div>
   </div>
 
+  <!-- FLOATING 3D INTERACTIVE STUDIO HUD -->
+  <div class="hud-3d-wrapper" id="hud3D">
+    <button class="hud-3d-toggle-btn" id="hud3DToggleBtn" title="Open 3D Animation Studio">
+      <i class="fa-solid fa-cube fa-spin" style="--fa-animation-duration: 6s;"></i>
+      <span>3D Studio</span>
+    </button>
+    <div class="hud-3d-panel" id="hud3DPanel">
+      <div class="hud-header">
+        <div class="hud-title"><i class="fa-solid fa-vr-cardboard"></i> 3D Animation Studio</div>
+        <button class="hud-close" id="hudCloseBtn">&times;</button>
+      </div>
+      <div class="hud-body">
+        <div class="hud-tip"><i class="fa-solid fa-hand-pointer"></i> <strong>Click & Drag anywhere</strong> to rotate in 3D &bull; <strong>Scroll</strong> to zoom</div>
+        <div class="hud-btn-grid">
+          <button class="hud-btn" id="btn3DOrbit"><i class="fa-solid fa-arrows-spin"></i> <span>360° Drag Orbit</span></button>
+          <button class="hud-btn" id="btn3DWarp"><i class="fa-solid fa-gauge-high"></i> <span>Hyperspace Warp</span></button>
+          <button class="hud-btn" id="btn3DPulse"><i class="fa-solid fa-atom"></i> <span>Pulse Core</span></button>
+          <button class="hud-btn" id="btn3DTheme"><i class="fa-solid fa-palette"></i> <span>Neon Theme</span></button>
+          <button class="hud-btn" id="btn3DReset"><i class="fa-solid fa-camera-rotate"></i> <span>Reset View</span></button>
+        </div>
+        <div class="hud-status" id="hudStatus">Status: Interactive 3D Parallax Active</div>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
@@ -1304,6 +1348,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-cpp.min.js"></script>
 
-  <script src="script.js?v=3.4"></script>
+  <script src="script.js?v=3.5"></script>
 </body>
 </html>

@@ -545,7 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 12. Three.js 3D Interactive Animation Engine
+  // 12. Full-Spectrum Interactive 3D WebGL Universe
   function init3DScene() {
     const canvas = document.getElementById('webglCanvas');
     if (!canvas || typeof THREE === 'undefined') return;
@@ -557,9 +557,13 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // A. Three.js Scene Setup
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
-    camera.position.z = 500;
+    scene.fog = new THREE.FogExp2(0x060913, 0.00085);
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 3000);
+    const defaultCamPos = { x: 0, y: 0, z: 520 };
+    camera.position.set(defaultCamPos.x, defaultCamPos.y, defaultCamPos.z);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -570,152 +574,323 @@ document.addEventListener('DOMContentLoaded', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-    // A. 3D Space Particle Field
-    const particleCount = 750;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
+    // B. Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    scene.add(ambientLight);
 
-    const palette = [
-      new THREE.Color(0x6366f1), // Indigo
-      new THREE.Color(0x06b6d4), // Cyan
-      new THREE.Color(0xa855f7), // Purple
-      new THREE.Color(0x38bdf8), // Sky blue
-      new THREE.Color(0x10b981)  // Emerald
+    const cursorLight = new THREE.PointLight(0x06b6d4, 3, 750);
+    cursorLight.position.set(0, 0, 300);
+    scene.add(cursorLight);
+
+    const coreLight = new THREE.PointLight(0xa855f7, 2.5, 900);
+    coreLight.position.set(160, 40, 50);
+    scene.add(coreLight);
+
+    // C. Particle Texture Generator
+    const pCanvas = document.createElement('canvas');
+    pCanvas.width = 32;
+    pCanvas.height = 32;
+    const pCtx = pCanvas.getContext('2d');
+    const radGrad = pCtx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    radGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+    radGrad.addColorStop(0.3, 'rgba(99, 102, 241, 0.85)');
+    radGrad.addColorStop(0.65, 'rgba(6, 182, 212, 0.45)');
+    radGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    pCtx.fillStyle = radGrad;
+    pCtx.fillRect(0, 0, 32, 32);
+    const particleTexture = new THREE.CanvasTexture(pCanvas);
+
+    // D. 2,000 Starfield Particles with Dynamic Depth & Hyperspace Warp
+    const particleCount = 2000;
+    const particleGeo = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleColors = new Float32Array(particleCount * 3);
+    const particleVelocities = new Float32Array(particleCount);
+
+    const themes = [
+      {
+        primary: 0x6366f1,
+        secondary: 0x06b6d4,
+        accent: 0xa855f7,
+        palette: [0x6366f1, 0x06b6d4, 0x38bdf8, 0xa855f7, 0x10b981],
+        name: 'Cyber Indigo & Cyan'
+      },
+      {
+        primary: 0x10b981,
+        secondary: 0x34d399,
+        accent: 0x059669,
+        palette: [0x10b981, 0x34d399, 0x6ee7b7, 0x047857, 0xa7f3d0],
+        name: 'Matrix Emerald'
+      },
+      {
+        primary: 0xec4899,
+        secondary: 0xa855f7,
+        accent: 0x8b5cf6,
+        palette: [0xec4899, 0xa855f7, 0xf43f5e, 0x8b5cf6, 0x38bdf8],
+        name: 'Synthwave Violet'
+      },
+      {
+        primary: 0xf59e0b,
+        secondary: 0xf97316,
+        accent: 0xeab308,
+        palette: [0xf59e0b, 0xf97316, 0xfbbf24, 0xef4444, 0x06b6d4],
+        name: 'Solar Amber'
+      }
     ];
 
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 1600;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 1600;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 1400;
+    let currentThemeIdx = 0;
 
-      const c = palette[Math.floor(Math.random() * palette.length)];
-      colors[i * 3] = c.r;
-      colors[i * 3 + 1] = c.g;
-      colors[i * 3 + 2] = c.b;
+    function applyParticleColors(theme) {
+      for (let i = 0; i < particleCount; i++) {
+        const hex = theme.palette[i % theme.palette.length];
+        const c = new THREE.Color(hex);
+        particleColors[i * 3] = c.r;
+        particleColors[i * 3 + 1] = c.g;
+        particleColors[i * 3 + 2] = c.b;
+      }
+      particleGeo.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
     }
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    for (let i = 0; i < particleCount; i++) {
+      particlePositions[i * 3] = (Math.random() - 0.5) * 2200;
+      particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 2200;
+      particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 2000;
+      particleVelocities[i] = 0.5 + Math.random() * 1.5;
+    }
 
-    // Glowing point texture
-    const pCanvas = document.createElement('canvas');
-    pCanvas.width = 16;
-    pCanvas.height = 16;
-    const pCtx = pCanvas.getContext('2d');
-    const radGrad = pCtx.createRadialGradient(8, 8, 0, 8, 8, 8);
-    radGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
-    radGrad.addColorStop(0.35, 'rgba(255, 255, 255, 0.7)');
-    radGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
-    pCtx.fillStyle = radGrad;
-    pCtx.fillRect(0, 0, 16, 16);
-    const pTexture = new THREE.CanvasTexture(pCanvas);
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    applyParticleColors(themes[0]);
 
-    const pMaterial = new THREE.PointsMaterial({
-      size: 4.2,
+    const particleMat = new THREE.PointsMaterial({
+      size: 5.5,
       vertexColors: true,
       transparent: true,
-      opacity: 0.8,
-      map: pTexture,
+      opacity: 0.85,
+      map: particleTexture,
       blending: THREE.AdditiveBlending,
       depthWrite: false
     });
 
-    const particles = new THREE.Points(geometry, pMaterial);
+    const particles = new THREE.Points(particleGeo, particleMat);
     scene.add(particles);
 
-    // B. Floating 3D Geometric Cyber Centerpiece
+    // E. 3D Holographic Cyber Core Centerpiece
     const cyberGroup = new THREE.Group();
 
-    // Central Wireframe Icosahedron
-    const icoGeo = new THREE.IcosahedronGeometry(110, 1);
+    // 1. Outer Icosahedron Wireframe
+    const icoGeo = new THREE.IcosahedronGeometry(130, 1);
     const icoMat = new THREE.MeshBasicMaterial({
       color: 0x6366f1,
       wireframe: true,
       transparent: true,
-      opacity: 0.32
+      opacity: 0.45
     });
     const icosahedron = new THREE.Mesh(icoGeo, icoMat);
     cyberGroup.add(icosahedron);
 
-    // Glowing nodes on icosahedron
+    // Glowing Node Vertices on Icosahedron
     const icoPointsMat = new THREE.PointsMaterial({
-      color: 0x38bdf8,
-      size: 5,
+      color: 0x06b6d4,
+      size: 6.5,
       transparent: true,
-      opacity: 0.9,
-      map: pTexture,
+      opacity: 0.95,
+      map: particleTexture,
       blending: THREE.AdditiveBlending
     });
     const icoPoints = new THREE.Points(icoGeo, icoPointsMat);
     cyberGroup.add(icoPoints);
 
-    // Outer Orbiting Torus Ring 1 (Cyan)
-    const torusGeo1 = new THREE.TorusGeometry(160, 1.4, 16, 100);
+    // 2. Inner Glowing Core Sphere
+    const innerCoreGeo = new THREE.SphereGeometry(65, 24, 24);
+    const innerCoreMat = new THREE.MeshBasicMaterial({
+      color: 0xa855f7,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.38
+    });
+    const innerCore = new THREE.Mesh(innerCoreGeo, innerCoreMat);
+    cyberGroup.add(innerCore);
+
+    // 3. Orbital Torus Ring 1 (Cyan)
+    const torusGeo1 = new THREE.TorusGeometry(180, 1.8, 16, 100);
     const torusMat1 = new THREE.MeshBasicMaterial({
       color: 0x06b6d4,
       transparent: true,
-      opacity: 0.45
+      opacity: 0.6
     });
     const ring1 = new THREE.Mesh(torusGeo1, torusMat1);
     ring1.rotation.x = Math.PI / 3;
     cyberGroup.add(ring1);
 
-    // Outer Orbiting Torus Ring 2 (Purple)
-    const torusGeo2 = new THREE.TorusGeometry(200, 1.1, 16, 100);
+    // 4. Orbital Torus Ring 2 (Purple)
+    const torusGeo2 = new THREE.TorusGeometry(220, 1.4, 16, 100);
     const torusMat2 = new THREE.MeshBasicMaterial({
       color: 0xa855f7,
       transparent: true,
-      opacity: 0.35
+      opacity: 0.45
     });
     const ring2 = new THREE.Mesh(torusGeo2, torusMat2);
     ring2.rotation.y = Math.PI / 4;
     ring2.rotation.x = -Math.PI / 6;
     cyberGroup.add(ring2);
 
-    // Positioning cyber group in 3D space
-    cyberGroup.position.set(240, 30, -80);
+    // 5. Orbital Torus Ring 3 (Emerald)
+    const torusGeo3 = new THREE.TorusGeometry(260, 1.2, 16, 100);
+    const torusMat3 = new THREE.MeshBasicMaterial({
+      color: 0x10b981,
+      transparent: true,
+      opacity: 0.35
+    });
+    const ring3 = new THREE.Mesh(torusGeo3, torusMat3);
+    ring3.rotation.z = Math.PI / 5;
+    cyberGroup.add(ring3);
+
+    // 6. Orbiting Data Satellite Orbs
+    const satelliteGroup = new THREE.Group();
+    const satGeo = new THREE.SphereGeometry(7, 16, 16);
+    const satMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const sat1 = new THREE.Mesh(satGeo, satMat);
+    const sat2 = new THREE.Mesh(satGeo, new THREE.MeshBasicMaterial({ color: 0xec4899 }));
+    satelliteGroup.add(sat1);
+    satelliteGroup.add(sat2);
+    cyberGroup.add(satelliteGroup);
+
+    // Default positioning in 3D scene (hero right space)
+    cyberGroup.position.set(220, 30, -60);
     scene.add(cyberGroup);
 
-    // C. Interaction Controls: Mouse, Touch & Scroll
+    // F. Scattered Floating 3D Geometric Polyhedra
+    const floatingPolys = [];
+    const polyConfigs = [
+      { geo: new THREE.OctahedronGeometry(45), pos: [-420, 180, -200], rotSpeed: [0.008, 0.012], color: 0x06b6d4 },
+      { geo: new THREE.TetrahedronGeometry(40), pos: [-380, -220, -150], rotSpeed: [-0.01, 0.007], color: 0xa855f7 },
+      { geo: new THREE.DodecahedronGeometry(50), pos: [450, -250, -220], rotSpeed: [0.006, -0.009], color: 0x38bdf8 },
+      { geo: new THREE.TorusKnotGeometry(32, 8, 64, 16), pos: [380, 260, -240], rotSpeed: [0.01, 0.01], color: 0x6366f1 }
+    ];
+
+    polyConfigs.forEach(cfg => {
+      const pMesh = new THREE.Mesh(cfg.geo, new THREE.MeshBasicMaterial({
+        color: cfg.color,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.35
+      }));
+      pMesh.position.set(cfg.pos[0], cfg.pos[1], cfg.pos[2]);
+      floatingPolys.push({ mesh: pMesh, speed: cfg.rotSpeed, initY: cfg.pos[1] });
+      scene.add(pMesh);
+    });
+
+    // G. Undulating 3D Cyber Wave Grid Floor
+    const gridGeo = new THREE.PlaneGeometry(2400, 2400, 36, 36);
+    const gridMat = new THREE.MeshBasicMaterial({
+      color: 0x6366f1,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.16
+    });
+    const cyberGrid = new THREE.Mesh(gridGeo, gridMat);
+    cyberGrid.rotation.x = -Math.PI / 2.3;
+    cyberGrid.position.set(0, -360, -300);
+    scene.add(cyberGrid);
+
+    // H. State & Interaction Variables
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
     let targetY = 0;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let orbitAngleX = 0;
+    let orbitAngleY = 0;
+    let targetOrbitX = 0;
+    let targetOrbitY = 0;
+    let zoomLevel = 520;
+    let targetZoom = 520;
+
+    let warpSpeedMode = false;
+    let dragOrbitActive = false;
+    let corePulseActive = false;
+    let pulseScale = 1;
+    let heroStageMode = 'photo';
+
     const halfX = window.innerWidth / 2;
     const halfY = window.innerHeight / 2;
 
+    // Mouse Tracking for Parallax & 3D Cursor Light
     window.addEventListener('mousemove', (e) => {
       mouseX = (e.clientX - halfX);
       mouseY = (e.clientY - halfY);
+
+      cursorLight.position.x = (e.clientX / window.innerWidth) * 800 - 400;
+      cursorLight.position.y = -(e.clientY / window.innerHeight) * 600 + 300;
+
+      if (isDragging) {
+        const deltaX = e.clientX - dragStartX;
+        const deltaY = e.clientY - dragStartY;
+        targetOrbitY += deltaX * 0.005;
+        targetOrbitX += deltaY * 0.005;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+      }
+    }, { passive: true });
+
+    // Click & Drag 360° Orbit Support
+    window.addEventListener('mousedown', (e) => {
+      if (e.target.closest('button, a, input, textarea, .modal-container, .hud-3d-panel')) return;
+      isDragging = true;
+      dragStartX = e.clientX;
+      dragStartY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // Touch Support for Mobile Drag & Parallax
+    window.addEventListener('touchstart', (e) => {
+      if (e.target.closest('button, a, input, textarea, .modal-container, .hud-3d-panel')) return;
+      if (e.touches.length === 1) {
+        isDragging = true;
+        dragStartX = e.touches[0].clientX;
+        dragStartY = e.touches[0].clientY;
+      }
     }, { passive: true });
 
     window.addEventListener('touchmove', (e) => {
       if (e.touches.length > 0) {
         mouseX = (e.touches[0].clientX - halfX);
         mouseY = (e.touches[0].clientY - halfY);
+
+        if (isDragging) {
+          const deltaX = e.touches[0].clientX - dragStartX;
+          const deltaY = e.touches[0].clientY - dragStartY;
+          targetOrbitY += deltaX * 0.008;
+          targetOrbitX += deltaY * 0.008;
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+        }
       }
     }, { passive: true });
 
-    // Interactive Click on 3D Engine Badge
-    const badge3D = document.querySelector('.badge-top-left');
-    if (badge3D) {
-      badge3D.style.cursor = 'pointer';
-      badge3D.setAttribute('title', 'Click to pulse 3D engine');
-      badge3D.addEventListener('click', () => {
-        showToast('3D WebGL Acceleration: Three.js & Vanilla-Tilt active!', 'fa-cube');
-        targetX += (Math.random() - 0.5) * 200;
-        targetY += (Math.random() - 0.5) * 200;
-        cyberGroup.rotation.y += 0.5;
-      });
-    }
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Mouse Wheel Zoom
+    window.addEventListener('wheel', (e) => {
+      if (dragOrbitActive || heroStageMode === '3d') {
+        targetZoom += e.deltaY * 0.35;
+        targetZoom = Math.max(260, Math.min(850, targetZoom));
+      }
+    }, { passive: true });
 
     let scrollY = window.pageYOffset;
     window.addEventListener('scroll', () => {
       scrollY = window.pageYOffset;
     }, { passive: true });
 
-    // D. Window Resize
+    // Window Resize
     window.addEventListener('resize', () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -723,34 +898,243 @@ document.addEventListener('DOMContentLoaded', () => {
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
 
-    // E. Animation Loop
+    // I. Hero 3D Stage Switcher Logic
+    const stagePhotoBtn = document.getElementById('stagePhotoBtn');
+    const stage3DBtn = document.getElementById('stage3DBtn');
+    const heroPhotoWrapper = document.getElementById('heroPhotoWrapper');
+    const hero3DStageWrapper = document.getElementById('hero3DStageWrapper');
+
+    if (stagePhotoBtn && stage3DBtn) {
+      stagePhotoBtn.addEventListener('click', () => {
+        heroStageMode = 'photo';
+        stagePhotoBtn.classList.add('active');
+        stage3DBtn.classList.remove('active');
+        if (heroPhotoWrapper) heroPhotoWrapper.style.display = 'block';
+        if (hero3DStageWrapper) hero3DStageWrapper.style.display = 'none';
+
+        targetZoom = 520;
+        showToast('Profile Card View Active', 'fa-id-badge');
+      });
+
+      stage3DBtn.addEventListener('click', () => {
+        heroStageMode = '3d';
+        stage3DBtn.classList.add('active');
+        stagePhotoBtn.classList.remove('active');
+        if (heroPhotoWrapper) heroPhotoWrapper.style.display = 'none';
+        if (hero3DStageWrapper) hero3DStageWrapper.style.display = 'flex';
+
+        targetZoom = 420;
+        targetOrbitX = 0;
+        targetOrbitY = 0;
+        triggerCorePulse();
+        showToast('3D Cyber Core Stage Active — Drag to rotate!', 'fa-cube');
+      });
+    }
+
+    function triggerCorePulse() {
+      corePulseActive = true;
+      pulseScale = 1.35;
+      coreLight.intensity = 5;
+      cursorLight.intensity = 5;
+      setTimeout(() => {
+        corePulseActive = false;
+        coreLight.intensity = 2.5;
+        cursorLight.intensity = 3;
+      }, 700);
+    }
+
+    // J. Floating 3D Studio HUD Controls
+    const hud3DToggleBtn = document.getElementById('hud3DToggleBtn');
+    const hud3DPanel = document.getElementById('hud3DPanel');
+    const hudCloseBtn = document.getElementById('hudCloseBtn');
+    const btn3DOrbit = document.getElementById('btn3DOrbit');
+    const btn3DWarp = document.getElementById('btn3DWarp');
+    const btn3DPulse = document.getElementById('btn3DPulse');
+    const btn3DTheme = document.getElementById('btn3DTheme');
+    const btn3DReset = document.getElementById('btn3DReset');
+    const hudStatus = document.getElementById('hudStatus');
+
+    if (hud3DToggleBtn && hud3DPanel) {
+      hud3DToggleBtn.addEventListener('click', () => {
+        hud3DPanel.classList.toggle('active');
+      });
+    }
+
+    if (hudCloseBtn && hud3DPanel) {
+      hudCloseBtn.addEventListener('click', () => {
+        hud3DPanel.classList.remove('active');
+      });
+    }
+
+    // 1. 360° Drag Orbit Toggle
+    if (btn3DOrbit) {
+      btn3DOrbit.addEventListener('click', () => {
+        dragOrbitActive = !dragOrbitActive;
+        btn3DOrbit.classList.toggle('active', dragOrbitActive);
+        canvas.classList.toggle('interactive', dragOrbitActive);
+        if (hudStatus) {
+          hudStatus.textContent = dragOrbitActive ? 'Status: 360° Drag Orbit Mode Enabled' : 'Status: Inertial Parallax Active';
+        }
+        showToast(dragOrbitActive ? '360° Drag Orbit Enabled — Drag anywhere to rotate!' : 'Drag Orbit Mode Paused', 'fa-arrows-spin');
+      });
+    }
+
+    // 2. Hyperspace Warp Mode Toggle
+    if (btn3DWarp) {
+      btn3DWarp.addEventListener('click', () => {
+        warpSpeedMode = !warpSpeedMode;
+        btn3DWarp.classList.toggle('active', warpSpeedMode);
+        if (hudStatus) {
+          hudStatus.textContent = warpSpeedMode ? 'Status: Hyperspace Warp Speed Active!' : 'Status: Normal Cosmic Drift';
+        }
+        showToast(warpSpeedMode ? 'Hyperspace Warp Engaged!' : 'Warp Disengaged', 'fa-gauge-high');
+      });
+    }
+
+    // 3. Pulse Core Button
+    if (btn3DPulse) {
+      btn3DPulse.addEventListener('click', () => {
+        triggerCorePulse();
+        if (hudStatus) hudStatus.textContent = 'Status: Core Energy Pulse Dispatched!';
+        showToast('3D Cyber Core Energy Pulse!', 'fa-atom');
+      });
+    }
+
+    // 4. Neon Theme Switcher
+    if (btn3DTheme) {
+      btn3DTheme.addEventListener('click', () => {
+        currentThemeIdx = (currentThemeIdx + 1) % themes.length;
+        const nextTheme = themes[currentThemeIdx];
+        applyParticleColors(nextTheme);
+
+        icoMat.color.setHex(nextTheme.primary);
+        innerCoreMat.color.setHex(nextTheme.accent);
+        ring1.material.color.setHex(nextTheme.secondary);
+        ring2.material.color.setHex(nextTheme.accent);
+        ring3.material.color.setHex(nextTheme.primary);
+        cyberGrid.material.color.setHex(nextTheme.primary);
+        cursorLight.color.setHex(nextTheme.secondary);
+        coreLight.color.setHex(nextTheme.accent);
+
+        if (hudStatus) hudStatus.textContent = `Theme: ${nextTheme.name}`;
+        showToast(`Theme: ${nextTheme.name}`, 'fa-palette');
+      });
+    }
+
+    // 5. Reset Camera View
+    if (btn3DReset) {
+      btn3DReset.addEventListener('click', () => {
+        targetOrbitX = 0;
+        targetOrbitY = 0;
+        targetZoom = 520;
+        targetX = 0;
+        targetY = 0;
+        warpSpeedMode = false;
+        if (btn3DWarp) btn3DWarp.classList.remove('active');
+        if (hudStatus) hudStatus.textContent = 'Status: Camera View Reset';
+        showToast('3D World Position Reset', 'fa-camera-rotate');
+      });
+    }
+
+    // K. Animation Loop
+    let clock = 0;
     function animate() {
       requestAnimationFrame(animate);
+      clock += 0.015;
 
-      targetX += (mouseX - targetX) * 0.04;
-      targetY += (mouseY - targetY) * 0.04;
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
 
-      camera.position.x = targetX * 0.28;
-      camera.position.y = -targetY * 0.28;
-      camera.position.z = 500 - (scrollY * 0.14);
-      camera.lookAt(0, 0, 0);
+      orbitAngleX += (targetOrbitX - orbitAngleX) * 0.08;
+      orbitAngleY += (targetOrbitY - orbitAngleY) * 0.08;
 
-      particles.rotation.y += 0.0005;
-      particles.rotation.x += 0.0002;
+      zoomLevel += (targetZoom - zoomLevel) * 0.08;
 
-      icosahedron.rotation.x += 0.004;
-      icosahedron.rotation.y += 0.006;
-      icoPoints.rotation.x += 0.004;
-      icoPoints.rotation.y += 0.006;
+      if (heroStageMode === '3d') {
+        camera.position.x = 0 + (targetX * 0.15);
+        camera.position.y = 0 - (targetY * 0.15);
+        camera.position.z = zoomLevel - 100;
+        camera.lookAt(0, 0, 0);
+      } else {
+        camera.position.x = (targetX * 0.25) + Math.sin(orbitAngleY) * 60;
+        camera.position.y = -(targetY * 0.25) + Math.sin(orbitAngleX) * 60;
+        camera.position.z = zoomLevel - (scrollY * 0.15);
+        camera.lookAt(0, 0, 0);
+      }
 
-      ring1.rotation.z += 0.007;
-      ring1.rotation.y += 0.003;
+      particles.rotation.y += 0.0006;
+      particles.rotation.x += 0.0003;
 
-      ring2.rotation.z -= 0.005;
-      ring2.rotation.x += 0.004;
+      // Warp Speed Particle Rush Logic
+      const posAttr = particleGeo.attributes.position;
+      const positions = posAttr.array;
+      const speedMultiplier = warpSpeedMode ? 14 : 1;
 
-      cyberGroup.position.y = 30 - (scrollY * 0.22);
-      cyberGroup.rotation.y = scrollY * 0.0018;
+      for (let i = 0; i < particleCount; i++) {
+        positions[i * 3 + 2] += particleVelocities[i] * speedMultiplier;
+        if (positions[i * 3 + 2] > 700) {
+          positions[i * 3 + 2] = -1200;
+        }
+      }
+      posAttr.needsUpdate = true;
+
+      // Core Pulse Animation
+      if (corePulseActive) {
+        pulseScale += (1.0 - pulseScale) * 0.08;
+      } else {
+        pulseScale += (1.0 - pulseScale) * 0.1;
+      }
+      cyberGroup.scale.set(pulseScale, pulseScale, pulseScale);
+
+      // Rotate Cyber Core Elements
+      icosahedron.rotation.x += 0.005;
+      icosahedron.rotation.y += 0.007;
+      icoPoints.rotation.x += 0.005;
+      icoPoints.rotation.y += 0.007;
+
+      innerCore.rotation.x -= 0.006;
+      innerCore.rotation.y -= 0.008;
+
+      ring1.rotation.z += 0.009;
+      ring1.rotation.y += 0.004;
+
+      ring2.rotation.z -= 0.007;
+      ring2.rotation.x += 0.005;
+
+      ring3.rotation.y += 0.006;
+      ring3.rotation.z += 0.004;
+
+      // Orbiting Satellites
+      sat1.position.x = Math.cos(clock * 1.5) * 180;
+      sat1.position.y = Math.sin(clock * 1.5) * 180;
+      sat2.position.x = Math.cos(clock * 1.2 + Math.PI) * 220;
+      sat2.position.z = Math.sin(clock * 1.2 + Math.PI) * 220;
+
+      // Cyber Group placement
+      if (heroStageMode === '3d') {
+        cyberGroup.position.set(0, 0, 0);
+        cyberGroup.rotation.y += 0.01;
+      } else {
+        cyberGroup.position.set(220, 20 - (scrollY * 0.2), -60);
+        cyberGroup.rotation.y = (scrollY * 0.0016) + orbitAngleY;
+        cyberGroup.rotation.x = orbitAngleX;
+      }
+
+      // Rotate Floating Polyhedra & Animate Float
+      floatingPolys.forEach((p, idx) => {
+        p.mesh.rotation.x += p.speed[0];
+        p.mesh.rotation.y += p.speed[1];
+        p.mesh.position.y = p.initY + Math.sin(clock + idx) * 25;
+      });
+
+      // Animate Cyber Grid Undulation
+      const gridPos = gridGeo.attributes.position;
+      for (let i = 0; i < gridPos.count; i++) {
+        const u = gridPos.getX(i);
+        const v = gridPos.getY(i);
+        gridPos.setZ(i, Math.sin(u * 0.008 + clock) * 18 + Math.cos(v * 0.008 + clock) * 18);
+      }
+      gridPos.needsUpdate = true;
 
       renderer.render(scene, camera);
     }
