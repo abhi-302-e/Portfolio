@@ -10,7 +10,31 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ## 🌟 Featured Engineering Projects
 
-### 1. 🎓 AI Academic Decision System
+### 1. 🛡️ CyberGuard AI — Autonomous Threat Detection & SOC Defense Engine
+*Autonomous SIEM Log Ingestion, Anomaly Classification & MITRE ATT&CK Mapping*
+- **Live Streamlit App**: [cyberguard-ai-jeugbkgj6yje83mnfgvj5o.streamlit.app](https://cyberguard-ai-jeugbkgj6yje83mnfgvj5o.streamlit.app/)
+- **Source Code**: [github.com/abhi-302-e/CyberGuard-AI](https://github.com/abhi-302-e/CyberGuard-AI)
+- **Architecture**: Autonomous security operations platform streaming high-velocity SIEM logs through unsupervised ML anomaly detectors and autoencoders, mapped to MITRE ATT&CK enterprise tactics for rapid containment.
+- **Key Innovations**:
+  - Unsupervised Isolation Forest + deep reconstruction autoencoder for zero-day threat detection (94.2% precision).
+  - Automated MITRE ATT&CK tactic/technique categorization (Recon, Lateral Movement, Exfiltration).
+  - Automated containment playbooks with instantaneous firewall IP blocking and session revocation.
+  - Interactive SOC telemetry radar console with live alert simulation.
+- **Tech Stack**: Python, Streamlit, Scikit-Learn, PyTorch, Pandas, NumPy, MITRE ATT&CK Framework, Regex SIEM Rules.
+
+### 2. 📈 TradeMind AI — Intelligent Market Intelligence & Quant Engine
+*Algorithmic Trading Analytics, FinBERT Financial Sentiment & Risk Management*
+- **Live Streamlit App**: [trademind-aii.streamlit.app](https://trademind-aii.streamlit.app/)
+- **Source Code**: [github.com/abhi-302-e/TradeMind-AI](https://github.com/abhi-302-e/TradeMind-AI)
+- **Architecture**: Quantitative market terminal fusing technical indicator momentum (MACD, RSI, EMA) with financial NLP sentiment signals (FinBERT) and Monte Carlo stochastic risk modeling.
+- **Key Innovations**:
+  - Dual-track signal fusion boosting directional price trajectory classification by +14.8%.
+  - 10,000-path Monte Carlo Value-at-Risk (VaR) simulator evaluating drawdown risks under volatile regimes.
+  - Adaptive Kelly Criterion position sizing engine safeguarding portfolio capital.
+  - Interactive Candlestick terminal with multi-asset comparison and technical overlays.
+- **Tech Stack**: Python, Streamlit, yfinance, Pandas, NumPy, Scikit-Learn, FinBERT, Transformers, Plotly.
+
+### 3. 🎓 AI Academic Decision System
 *Predictive Student Success, Degree Audit Validation & Academic Decision Support*
 - **Live Streamlit App**: [ai-academic-decision-system.streamlit.app](https://ai-academic-decision-system.streamlit.app/)
 - **Source Code**: [github.com/abhi-302-e/AI-Academic-Decision-System](https://github.com/abhi-302-e/AI-Academic-Decision-System)

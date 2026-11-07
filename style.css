@@ -636,6 +636,16 @@ a {
   border-color: rgba(249, 115, 22, 0.5);
 }
 
+.badge-cyber:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.badge-trade:hover {
+  background: rgba(16, 185, 129, 0.18);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
 .badge-status {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -1239,6 +1249,16 @@ a {
   border-bottom: 1px solid rgba(168, 85, 247, 0.4);
 }
 
+.banner-cyber {
+  background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 50%, #991b1b 100%);
+  border-bottom: 1px solid rgba(239, 68, 68, 0.45);
+}
+
+.banner-trade {
+  background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #047857 100%);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.45);
+}
+
 .banner-enterprise {
   background: linear-gradient(135deg, #022c22 0%, #064e3b 50%, #0f766e 100%);
   border-bottom: 1px solid rgba(20, 184, 166, 0.4);
@@ -1301,6 +1321,76 @@ a {
 .badge-role {
   font-size: 0.74rem;
   color: var(--text-muted);
+}
+
+.project-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.project-title-row .project-name {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.project-title-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #38bdf8;
+  cursor: pointer;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  font-size: 0.95rem;
+  padding: 0;
+  position: relative;
+  outline: none;
+}
+
+.project-title-arrow::after {
+  content: "View Details";
+  position: absolute;
+  bottom: 110%;
+  right: 0;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f8fafc;
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: all 0.2s ease;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.project-title-arrow:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.project-title-arrow:hover {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-color: transparent;
+  color: #ffffff;
+  transform: translateX(4px) scale(1.12);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.5);
+}
+
+.project-card:hover .project-title-arrow {
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #ffffff;
 }
 
 .project-name {
