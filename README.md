@@ -8,7 +8,7 @@ An advanced, interactive developer portfolio featuring a **3D WebGL Three.js int
 
 ---
 
-## 🌟 Featured Engineering Projects
+## 🌟 Featured Engineering Projects_
 
 ### 1. 🛡️ CyberGuard AI — Autonomous Threat Detection & SOC Defense Engine
 *Autonomous SIEM Log Ingestion, Anomaly Classification & MITRE ATT&CK Mapping*
